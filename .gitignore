@@ -1,4 +1,5 @@
 *.out
 *.exe
 -bin/keep
-biin/*
+bin/*
+sim-linux
