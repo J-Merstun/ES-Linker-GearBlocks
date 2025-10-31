@@ -1,3 +1,5 @@
+sudo apt-get install git clang libsdl2-dev flex bison cmake libsdl2-image-dev
+
 rm -rf sim-linux
 
 git clone --recurse-submodules https://github.com/bobsayshilol/engine-sim -b sdl-build sim-linux
