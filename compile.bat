@@ -1,1 +1,1 @@
-g++ main.cpp -o bin/out
+g++ main.cpp -o bin/out.exe

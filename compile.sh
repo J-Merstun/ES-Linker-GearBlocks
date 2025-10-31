@@ -1,0 +1,1 @@
+g++ main.ccp -o bin/out
