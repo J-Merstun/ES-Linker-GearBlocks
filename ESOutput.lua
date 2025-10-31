@@ -1,6 +1,1 @@
-local ESOutput = {}
-
-ESOutput.RPM = 55
-ESOutput.Torque = 70
-ESOutput.Brake = 0
-return ESOutput
+local ESOutput = {}/n/nESOutput.RPM = 5/nESOutput.Torque = 9/nESOutput.Brake = 1/nreturn ESOutput

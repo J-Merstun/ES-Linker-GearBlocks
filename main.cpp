@@ -8,20 +8,25 @@ using namespace std;
 
 int main()
 {
-  ifstream SetRPM;
+  ofstream SetLua;
   string line;
-  SetRPM.open("D:/SteamLibrary/steamapps/common/GearBlocks/BepInEx/LogOutput.log");
-  if (SetRPM.is_open())
-  {
-    while (getline(SetRPM, line))
-    {
-      cout << line << endl;
-      std::this_thread::sleep_for(std::chrono::milliseconds(7));
-    }
-    SetRPM.close();
-  }
-  // SetRPM << "local ESOutput = {}/n/nESOutput.RPM = 50/nESOutput.Torque = 50/nESOutput.Brake = 0/nreturn ESOutput";
-  // SetRPM.close();
+//SetLua.open("D:/SteamLibrary/steamapps/common/GearBlocks/BepInEx/LogOutput.log");
+//  if (SetLua.is_open())
+//  {
+//    while (getline(SetLua, line))
+//    {
+//      cout << line << endl;
+//      std::this_thread::sleep_for(std::chrono::milliseconds(7));
+//    }
+//    SetLua.close();
+//  }
+  int RPM = 5;
+  int Torque = 9;
+  int Brake = 1;
+
+    SetLua.open("C:/Users/Owner/AppData/LocalLow/SmashHammer Games/GearBlocks/ScriptMods/ES-Linker-GearBlocks/ESOutput.lua");
+    SetLua << "local ESOutput = {}/n/nESOutput.RPM = " + to_string(RPM) + "/nESOutput.Torque = " + to_string(Torque) + "/nESOutput.Brake = " + to_string(Brake) + "/nreturn ESOutput";
+    SetLua.close();
 
   return 0;
 }
