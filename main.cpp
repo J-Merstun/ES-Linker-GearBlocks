@@ -25,7 +25,7 @@ int main()
   int Brake = 1;
 
     SetLua.open("C:/Users/Owner/AppData/LocalLow/SmashHammer Games/GearBlocks/ScriptMods/ES-Linker-GearBlocks/ESOutput.lua");
-    SetLua << "local ESOutput = {}/n/nESOutput.RPM = " + to_string(RPM) + "/nESOutput.Torque = " + to_string(Torque) + "/nESOutput.Brake = " + to_string(Brake) + "/nreturn ESOutput";
+    SetLua << "local ESOutput = {}\n\nESOutput.RPM = " + to_string(RPM) + "\nESOutput.Torque = " + to_string(Torque) + "\nESOutput.Brake = " + to_string(Brake) + "\nreturn ESOutput";
     SetLua.close();
 
   return 0;

@@ -1,12 +1,13 @@
 -- Engine Sim Linker
 
-local "put file path here"
+local ESOutput = require("ESOutput")
+
 
 ----- Init UI -----
 local behaviour
 local behaviour2
 local SaveRPM
-local SavePT
+local SaveTorque
 local SaveBrake
 
 
@@ -28,7 +29,7 @@ textButton.SetAlignment( align_TopEdge, 5, 30 )
 local function onTextButtonClicked()
 	behaviour = LocalPlayer.Value.Targeter.TargetedPart.GetBehaviour("Control Wheel")
 	SaveRPM = behaviour.GetTweakable("Max RPM")
-	SavePT = behaviour.GetTweakable("Peak Torque")
+	SaveTorque = behaviour.GetTweakable("Peak Torque")
 	print(behaviour.Name)
 end
 textButton.OnClick.add( onTextButtonClicked )
@@ -38,8 +39,9 @@ local textButton = win.CreateTextButton()
 textButton.SetAlignment( align_LeftEdge, 10, 110 )
 textButton.SetAlignment( align_BottomEdge, 5, 30 )
 local function onTextButtonClicked()
-	SaveRPM.Value = 100
-	SavePT.Value = 100
+	local ESOutput = loadfile(ScriptPath .. "ESOutput.lua")()
+	SaveRPM.Value = ESOutput.RPM
+	SaveTorque.Value = ESOutput.Torque
 	behaviour.SyncTweakables()
 end
 textButton.OnClick.add( onTextButtonClicked )
@@ -62,7 +64,7 @@ local textButton = win.CreateTextButton()
 textButton.SetAlignment( align_RightEdge, 10, 110 )
 textButton.SetAlignment( align_BottomEdge, 5, 30 )
 local function onTextButtonClicked()
-	SaveBrake.Value = 100
+	SaveBrake.Value = ESOutput.Brake
 	behaviour2.SyncTweakables()
 end
 textButton.OnClick.add( onTextButtonClicked )
@@ -75,6 +77,8 @@ textButton.Text = 'Set 100 (temp)'
 
 function FixedUpdate()
 
+--behaviour3 = 
+--print(LocalPlayer.Value.Targeter.TargetedPart.GetBehaviour("Control Wheel").IsActivated)
 
 --thing to get the names of objects
 --	local localPlayer = LocalPlayer.Value
@@ -87,8 +91,7 @@ function FixedUpdate()
 --			print(behaviour.Name)
 --		end
 --	end
-			
-	
+
 end	
 
 function Cleanup()
