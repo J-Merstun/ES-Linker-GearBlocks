@@ -1,0 +1,55 @@
+Engine Sim Throttle = line 285 of "sim-linux\src\engine_sim_aplication.cpp"
+
+    else if (m_engine.IsKeyDown(ysKey::Code::R)) {
+            m_targetSpeedSetting = 1.0;
+
+-------------------------------------------------------------------------------
+
+Maybe RPM and Torque = line 249 of "sim-linux\src\oscilloscope_cluster.cpp"
+
+            m_torqueScope->addDataPoint(engine->getRpm(), m_torque);
+            m_powerScope->addDataPoint(engine->getRpm(), m_power);
+
+-------------------------------------------------------------------------------
+
+Maybe RPM and Torque = line 51 "sim-linux\src\right_gadge_cluster.cpp"
+
+    m_tachometer->m_title = "ENGINE SPEED";
+        m_tachometer->m_unit = "rpm";
+        m_tachometer->m_precision = 0;
+
+-------------------------------------------------------------------------------
+
+Maybe RPM = line 303 "sim-linux\src\right_gadge_cluster.cpp"
+
+    double RightGaugeCluster::getRpm() const {
+        return (m_engine != nullptr)
+            ? m_engine->getRpm()
+            : 0;
+    }
+
+-------------------------------------------------------------------------------
+
+Maybe Torque = line 44 "sim-linux\include\crankshaft.h"
+
+    inline double getFrictionTorque() const { return m_frictionTorque; }
+
+-------------------------------------------------------------------------------
+
+Maybe Torque = line 137 "sim-linux\include\engine_sim_application.h"
+
+        std::vector<SimulationObject *> m_objects;
+        Engine *m_iceEngine;
+        Vehicle *m_vehicle;
+        Transmission *m_transmission;
+        Simulator *m_simulator;
+        double m_dynoSpeed;
+        double m_torque;
+
+-------------------------------------------------------------------------------
+
+Maybe Torque = line 68 "sim-linux\src\engine_sim_application.cpp"
+
+        m_torque = 0;
+
+-------------------------------------------------------------------------------
