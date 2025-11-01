@@ -1,0 +1,156 @@
+local Settings = {}
+
+Settings.DefaultKey = 'w'
+
+return Settings
+
+
+--List of Valid Keys:
+
+-- backspace
+-- delete
+-- tab
+-- clear
+-- return
+-- pause
+-- escape
+-- space
+-- [0]
+-- [1]
+-- [2]
+-- [3]
+-- [4]
+-- [5]
+-- [6]
+-- [7]
+-- [8]
+-- [9]
+-- [/]
+-- [*]
+-- [-]
+-- [+]
+-- [.]
+-- equals
+-- enter
+-- up
+-- down
+-- right
+-- left
+-- insert
+-- home
+-- end
+-- page up
+-- page down
+-- f1
+-- f2
+-- f3
+-- f4
+-- f5
+-- f6
+-- f7
+-- f8
+-- f9
+-- f10
+-- f11
+-- f12
+-- f13
+-- f14
+-- f15
+-- 0
+-- 1
+-- 2
+-- 3
+-- 4
+-- 5
+-- 6
+-- 7
+-- 8
+-- 9
+-- -
+-- =
+-- `
+-- ~
+-- !
+-- @
+-- #
+-- $
+-- %
+-- ^
+-- &
+-- *
+-- (
+-- )
+-- _
+-- +
+-- [
+-- ]
+-- {
+-- }
+-- \
+-- |
+-- ;
+-- '
+-- :
+-- "
+-- ,
+-- .
+-- /
+-- <
+-- >
+-- ?
+-- a
+-- b
+-- c
+-- d
+-- e
+-- f
+-- g
+-- h
+-- i
+-- j
+-- k
+-- l
+-- m
+-- n
+-- o
+-- p
+-- q
+-- r
+-- s
+-- t
+-- u
+-- v
+-- w
+-- x
+-- y
+-- z
+-- numlock
+-- caps lock
+-- scroll lock
+-- right shift
+-- left shift
+-- right ctrl
+-- left ctrl
+-- right alt
+-- left alt
+-- right cmd
+-- left cmd
+-- right super
+-- left super
+-- alt gr
+-- compose
+-- help
+-- print screen
+-- sys req
+-- break
+-- menu
+-- power
+-- euro
+-- undo
+-- mouse 0
+-- mouse 1
+-- mouse 2
+-- mouse 3
+-- mouse 4
+-- mouse 5
+-- mouse 6

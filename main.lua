@@ -1,7 +1,7 @@
 -- Engine Sim Linker
 
 local ESOutput = require("ESOutput")
-
+local Settings = require("Settings")
 
 ----- Init UI -----
 local behaviourWheel = nil
@@ -12,8 +12,8 @@ local SaveBrake
 
 
 local win = Windows.CreateWindow()
-win.SetAlignment( align_RightEdge, 20, 250 )
-win.SetAlignment( align_TopEdge, 80, 105 )
+win.SetAlignment( align_RightEdge, 20, 120 )
+win.SetAlignment( align_TopEdge, 80, 200 )
 local function onWindowClose()
 	UnloadScript.Raise( ScriptName )	-- Window closed, so unload this script.
 end
@@ -24,7 +24,7 @@ win.Show( true )
 --Wheel
 
 local textButton = win.CreateTextButton()
-textButton.SetAlignment( align_LeftEdge, 10, 110 )
+textButton.SetAlignment( align_LeftEdge, 5, 110 )
 textButton.SetAlignment( align_TopEdge, 5, 30 )
 local function onTextButtonClicked()
 	behaviourWheel = LocalPlayer.Value.Targeter.TargetedPart.GetBehaviour("Control Wheel")
@@ -35,21 +35,11 @@ end
 textButton.OnClick.add( onTextButtonClicked )
 textButton.Text = 'Hand Wheel'
 
-local textButton = win.CreateTextButton()
-textButton.SetAlignment( align_LeftEdge, 10, 110 )
-textButton.SetAlignment( align_BottomEdge, 5, 30 )
-local function onTextButtonClicked()
-	behaviourWheel = nil
-	behaviourBrake = nil
-end
-textButton.OnClick.add( onTextButtonClicked )
-textButton.Text = 'Reset'
-
 --Brake
 
 local textButton = win.CreateTextButton()
-textButton.SetAlignment( align_RightEdge, 10, 110 )
-textButton.SetAlignment( align_TopEdge, 5, 30 )
+textButton.SetAlignment( align_LeftEdge, 5, 110 )
+textButton.SetAlignment( align_TopEdge, 40, 30 )
 local function onTextButtonClicked()
 	behaviourBrake = LocalPlayer.Value.Targeter.TargetedPart.GetBehaviour("Brake")
 	SaveBrake = behaviourBrake.GetTweakable("Peak Torque")
@@ -58,22 +48,46 @@ end
 textButton.OnClick.add( onTextButtonClicked )
 textButton.Text = 'Break'
 
---local textButton = win.CreateTextButton()
---textButton.SetAlignment( align_RightEdge, 10, 110 )
---textButton.SetAlignment( align_BottomEdge, 5, 30 )
---local function onTextButtonClicked()
---	SaveBrake.Value = ESOutput.Brake
---	behaviourBrake.SyncTweakables()
---end
---textButton.OnClick.add( onTextButtonClicked )
---textButton.Text = 'Set 100 (temp)'
+-- Asign Key
+
+local inputField = win.CreateInputField()
+inputField.SetAlignment( align_LeftEdge, 5, 110 )
+inputField.SetAlignment( align_TopEdge, 75, 30 )
+local function onInputFieldEndEdit()
+	print(inputField.Value)
+end
+inputField.OnEndEdit.add( onInputFieldEndEdit )
+inputField.Value = Settings.DefaultKey
 
 
+
+-- Reset
+
+local textButton = win.CreateTextButton()
+textButton.SetAlignment( align_LeftEdge, 5, 110 )
+textButton.SetAlignment( align_TopEdge, 120, 30 )
+local function onTextButtonClicked()
+	behaviourWheel = nil
+	behaviourBrake = nil
+	inputField.Value = Settings.DefaultKey
+end
+textButton.OnClick.add( onTextButtonClicked )
+textButton.Text = 'Reset'
 
 
 ----- Entry functions -----
 
 function FixedUpdate()
+
+	if Input.GetKeyDown( string.format('%s',inputField.Value) ) then
+		print( 'Throttle = 1' )
+	end
+	if Input.GetKeyUp( string.format('%s',inputField.Value) ) then
+		print( 'Throttle = 0' )
+	end
+
+--time = os.date("*t")
+--print(time.hour .. time.min .. time.sec)
 
 	--behaviour3 = 
 	--print(LocalPlayer.Value.Targeter.TargetedPart.GetBehaviour("Control Wheel").IsActivated)
@@ -89,6 +103,7 @@ function FixedUpdate()
 	--			print(behaviour.Name)
 	--		end
 	--	end
+	
 	if behaviourWheel ~= nil then
 		if SaveRPM.Value ~= ESOutput.RPM
 			then

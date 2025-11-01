@@ -1,5 +1,5 @@
 {
-  "name": "PhysicsExample",
+  "name": "ES Linker",
   "desc": "A simple physics demonstration.\n\nTarget a part, then hold <i>Tab</i> to apply a force to it.",
   "tags": [
     "example"
