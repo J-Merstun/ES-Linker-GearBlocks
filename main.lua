@@ -1,6 +1,6 @@
 -- Engine Sim Linker
 
-local ESOutput = require("ESOutput")
+--local ESOutput = require("ESOutput")
 local Settings = require("Settings")
 
 ----- Init UI -----
@@ -10,6 +10,10 @@ local SaveRPM
 local SaveTorque
 local SaveBrake
 
+local x = os.clock()
+local time = os.date("*t")
+local TimeSave = os.date(time.sec)
+local TimeMS
 
 local win = Windows.CreateWindow()
 win.SetAlignment( align_RightEdge, 20, 120 )
@@ -75,24 +79,74 @@ textButton.OnClick.add( onTextButtonClicked )
 textButton.Text = 'Reset'
 
 
+
+-- manual test button, remove later
+
+--	local textButton = win.CreateTextButton()
+--	textButton.SetAlignment( align_LeftEdge, 5, 110 )
+--	textButton.SetAlignment( align_TopEdge, 150, 30 )
+--	local function onTextButtonClicked()
+--				local ESOutput = loadfile(ScriptPath .. "ESOutput.lua")()--loads the file, put as part of execute
+--				SaveRPM.Value = ESOutput.RPM
+--				SaveTorque.Value = ESOutput.Torque
+--				behaviourWheel.SyncTweakables()
+--				print('work?')
+--	end
+--	textButton.OnClick.add( onTextButtonClicked )
+--	textButton.Text = 'Update'
+
+
+
+
 ----- Entry functions -----
 
-function FixedUpdate()
+function Update()
 
-	if Input.GetKeyDown( string.format('%s',inputField.Value) ) then
-		print( 'Throttle = 1' )
+--ESOutput Testing
+
+	--local ESOutput = require("ESOutput")
+	--local ESOutput = loadfile(ScriptPath .. "ESOutput.lua")()
+	--print(ESOutput.Torque, SaveRPM.Value)
+	--print(ESOutput.RPM, SaveTorque.Value)
+	--print(ESOutput.Brake)
+
+
+-- Throttle inputs
+
+--	if Input.GetKeyDown( string.format('%s',inputField.Value) ) then
+--		print( 'Throttle = 1' )
+--	end
+--	if Input.GetKeyUp( string.format('%s',inputField.Value) ) then
+--		print( 'Throttle = 0' )
+--	end
+--	if Input.GetKey( string.format('%s',inputField.Value) ) then
+--		print( 'Throttle = 1' )
+--	else
+--		print( 'Throttle = 0' )
+--	end
+
+
+
+-- System Time
+
+time = os.date("*t")
+
+if time.sec ~= TimeSave
+	then
+		x = os.clock()
+		TimeSave = time.sec
+	else
+		TimeMS = (os.clock()-x)*1000
 	end
-	if Input.GetKeyUp( string.format('%s',inputField.Value) ) then
-		print( 'Throttle = 0' )
-	end
 
---time = os.date("*t")
---print(time.hour .. time.min .. time.sec)
+-- Print Output for Engine Sim
 
-	--behaviour3 = 
-	--print(LocalPlayer.Value.Targeter.TargetedPart.GetBehaviour("Control Wheel").IsActivated)
+print(string.format("H:%0.0f M:%0.0f S:%0.0f ms:%0.0f", time.hour, time.min, time.sec, TimeMS))
 
-	--thing to get the names of objects
+
+
+-- thing to get the names of objects
+
 	--	local localPlayer = LocalPlayer.Value
 	--	local targeter
 	--	if localPlayer then
@@ -103,8 +157,11 @@ function FixedUpdate()
 	--			print(behaviour.Name)
 	--		end
 	--	end
-	
+
+-- Auto Update
+
 	if behaviourWheel ~= nil then
+		local ESOutput = loadfile(ScriptPath .. "ESOutput.lua")()--loads the file, put as part of execute
 		if SaveRPM.Value ~= ESOutput.RPM
 			then
 				SaveRPM.Value = ESOutput.RPM
@@ -114,6 +171,7 @@ function FixedUpdate()
 	end
 
 	if behaviourBrake ~= nil then
+		local ESOutput = loadfile(ScriptPath .. "ESOutput.lua")()--loads the file, put as part of execute
 		if SaveBrake.Value ~= ESOutput.Brake 
 			then
 				SaveBrake.Value = ESOutput.Brake

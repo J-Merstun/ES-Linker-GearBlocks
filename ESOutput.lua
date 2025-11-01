@@ -1,6 +1,6 @@
 local ESOutput = {}
 
-ESOutput.RPM = 5
-ESOutput.Torque = 9
-ESOutput.Brake = 1
+ESOutput.RPM = 2000
+ESOutput.Torque = 950
+ESOutput.Brake = 0
 return ESOutput
