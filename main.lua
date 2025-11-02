@@ -10,7 +10,7 @@ local SaveRPM
 local SaveTorque
 local SaveBrake
 
-local x = os.clock()
+local ClockSave = os.clock()
 local time = os.date("*t")
 local TimeSave = os.date(time.sec)
 local TimeMS
@@ -133,10 +133,10 @@ time = os.date("*t")
 
 if time.sec ~= TimeSave
 	then
-		x = os.clock()
+		ClockSave = os.clock()
 		TimeSave = time.sec
 	else
-		TimeMS = (os.clock()-x)*1000
+		TimeMS = (os.clock()-ClockSave)*1000
 	end
 
 -- Print Output for Engine Sim
