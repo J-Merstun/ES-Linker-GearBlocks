@@ -1,3 +1,5 @@
+-------------------------------------------------------------------------------
+
 Engine Sim Throttle = line 285 of "sim-linux\src\engine_sim_aplication.cpp"
 
     else if (m_engine.IsKeyDown(ysKey::Code::R)) {
