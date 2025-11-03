@@ -9,6 +9,7 @@ local behaviourBrake = nil
 local SaveRPM
 local SaveTorque
 local SaveBrake
+local SavePing = -1
 
 local ClockSave = os.clock()
 local time = os.date("*t")
@@ -127,6 +128,9 @@ function Update()
 
 
 
+
+
+
 -- System Time
 
 time = os.date("*t")
@@ -139,9 +143,13 @@ if time.sec ~= TimeSave
 		TimeMS = (os.clock()-ClockSave)*1000
 	end
 
--- Print Output for Engine Sim
-
-print(string.format("H:%0.0f M:%0.0f S:%0.0f ms:%0.0f", time.hour, time.min, time.sec, TimeMS))
+-- ping
+local ESOutput = loadfile(ScriptPath .. "ESOutput.lua")()--loads the file, put as part of execute
+if ESOutput.Ping ~= SavePing
+	then
+		print(string.format("H:%0.0f M:%0.0f S:%0.0f ms:%0.0f", time.hour, time.min, time.sec, TimeMS)) -- Print Output for Engine Sim
+		SavePing = ESOutput.Ping -- reset ping
+end
 
 
 
