@@ -27,15 +27,9 @@ std::string read_last_line(const std::string& filename) {
 
         line.insert(line.begin(), ch);
     }
-
     return line;
 }
 
-int counter()
-{
-   static int count = 0;   // initialized only once across all calls
-   return ++count;
-}
 
 int main() {
 
@@ -62,9 +56,9 @@ int main() {
     SetLua << "\nreturn ESOutput";
     SetLua.close();
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1800));
 
     std::string last = read_last_line("D:/SteamLibrary/steamapps/common/GearBlocks/BepInEx/LogOutput.log");
-    std::cout << "Last line: " << last << "\n";
+    std::cout << last << "\n";
     return 0;
 }

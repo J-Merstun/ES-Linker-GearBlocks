@@ -14,7 +14,7 @@ local SavePing = -1
 local ClockSave = os.clock()
 local time = os.date("*t")
 local TimeSave = os.date(time.sec)
-local TimeMS
+local TimeMS = 0
 
 local win = Windows.CreateWindow()
 win.SetAlignment( align_RightEdge, 20, 120 )
