@@ -1,7 +1,7 @@
 # Engine Simulator for Gearblocks
 <br>
 
-This repository seeks to implement a script mod
+This repository seeks to implement a script mod that pulls data from AngeYagi's engine sim to better simulate an engine in gearblocks.
 
 To Do:
 
@@ -12,4 +12,5 @@ To Do:
     - Leads listed in: Notes.txt
 
 
-Curently have some C++ code talking to Gearblocks via ESLinker.lua by updaying that file for Main.Lua to read, if a socket is sucsessfull it would likely to be more efficent to have the BepinEX Plugin talk to Engine Sim, Depedning on the complexity it might be effectivly to have the controller made in lua as its simple to undersand and everyone is use to using Script Mods. Data can still be sent to the plugin via the Log.
+Curently have some C++ code talking to Gearblocks via ESLinker.lua by updating that file for Main.Lua to read, if a socket is sucsessfull it would likely to be more efficent to have the BepinEX Plugin talk to Engine Sim, Depending on the complexity it might be effectivly to have the controller made in lua as its simple to undersand and everyone is used to using Script Mods. Data can still be sent to the plugin via the Log.
+
